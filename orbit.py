@@ -1,7 +1,7 @@
 class Orbit:
     def __init__(self,n,s1,s2):
         #first line
-        self.name = n
+        self.name = n.strip()
         self.number = int(s1[2:7])
         self.classification = s1[7]
         self.internationaldesignatoryr = int(s1[9:11])
