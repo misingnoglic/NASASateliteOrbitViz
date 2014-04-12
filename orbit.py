@@ -1,5 +1,5 @@
 class Orbit:
-    def __init__(self,n,s1,s2)
+    def __init__(self,n,s1,s2):
         #first line
         self.name = n
         self.number = s1[2:7]
@@ -7,7 +7,7 @@ class Orbit:
         self.internationaldesignatoryr = s1[9:11]
         self.internationaldesignatorln = s1[11:14]
         self.internationaldesignatorpiece = s1[14:17]
-        self.epochyear = s1[18:20]
+        self.epochyear = s1[17:20]
         self.epoch = s1[20:32]
         self.firsttimederivativeofmean = s1[33:43]
         self.secondtimederivativeofmean = s1[44:52]
@@ -28,8 +28,12 @@ class Orbit:
         self.checksum = s2[68]
 
     def printstuff(self):
-        print [self.name,self.number,self.classification,self.internationaldesignatoryr,self.internationaldesignatorln,self.epochyear,
-               self.epoch,self.firsttimederivativeofmean,self.secondtimederivativeofmean,self.bstardragterm,self.zero,self.elemsetnum, self.checksum]
-               
+        print [self.name,self.number,self.classification,self.internationaldesignatoryr,
+               self.internationaldesignatorln,self.internationaldesignatorpiece,self.epochyear,
+               self.epoch,self.firsttimederivativeofmean,self.secondtimederivativeofmean,self.bstardragterm,
+               self.zero,self.elemsetnum, self.checksum]
+        print [self.number2,self.inclination,self.rightascention,self.eccentricity,
+               self.argumentofperigee,self.meananomaly,self.meanmotion,self.revnumberatepoch,
+               self.checksum]
         
         
