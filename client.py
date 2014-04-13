@@ -10,13 +10,30 @@ import random as rn
 DataURL = "http://www.celestrak.com/NORAD/elements/stations.txt"
 urlretrieve(DataURL,"stations.txt")
 SatData = []
-for i in range(20):
-    with open("stations.txt") as stations:
-        issdata=[stations.next() for x in xrange(i*3,(i*3)+3)]
-    data = "".join(issdata)
-    data = data.split("\n")
+stations = open("stations.txt")
+stations = stations.read()
+L = stations.split("\n")
+#L = [x.strip() for x in L]
+#print L
+for i in range(30,81,3):
+    #print i
+    data = []
+    for x in range(i,i+3):
+        data+=[L[x]]
+        #print L[x]
+    #print "loop"
     ISS = twoline2rv(data[1],data[2],wgs72)
     SatData+=[ISS]
+#print SatData
+##for i in range(20):
+##    with open("stations.txt") as stations:
+##        issdata=[stations.next() for x in xrange(i*3,(i*3)+3)]
+##        print(issdata)
+##        print(
+##    data = "".join(issdata)
+##    data = data.split("\n")
+##    ISS = twoline2rv(data[1],data[2],wgs72)
+##    SatData+=[ISS]
 #print SatData    
 year=2000
 month=6
@@ -29,7 +46,8 @@ orbits = [None for x in SatData]
 for i in range(len(SatData)):
     position, velocity = SatData[i].propagate(year, month, day, hour, minute, second)
     #position = [x/1000.0 for x in position]
-    #print position
+    print(i)
+    print position
     orbits[i]= sphere(pos=tuple(position),radius=1000,make_trail=True,color=(rn.random(), rn.random(), rn.random()))
     
     #sleep(5)
