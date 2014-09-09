@@ -1,1 +1,0 @@
-To be written later. Hopefully with LaTeX
